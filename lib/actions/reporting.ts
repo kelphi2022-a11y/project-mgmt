@@ -1,5 +1,5 @@
 // lib/actions/reporting.ts
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export type ReportingNode = {
   id: string;

@@ -1,7 +1,8 @@
+'use client';
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { supabase } from "@/app/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
 const navigation = [
   { name: "Dashboard", href: "/" },

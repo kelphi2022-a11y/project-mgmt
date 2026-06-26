@@ -1,7 +1,8 @@
+"use client";
 // app/(app)/projects/[id]/tasks/[taskId]/sub-tasks/page.tsx
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { SubTask } from '@/app/lib/actions/subTask';
+import { SubTask } from '@/lib/actions/subTask';
 import SubTaskRow from '@/components/app/SubTaskRow';
 import SubTaskModal from '@/components/app/SubTaskModal';
 import { Button } from '@/components/ui/button';
@@ -34,7 +35,7 @@ export default function SubTasksPage({ params }: { params: { id: string; taskId:
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Sub‑tasks</h2>
         <SubTaskModal taskId={taskId} onSubTaskCreated={handleUpdated}>
-          <Button variant="primary">Add Sub‑Task</Button>
+          <Button variant="default">Add Sub‑Task</Button>
         </SubTaskModal>
       </div>
       {loading ? (

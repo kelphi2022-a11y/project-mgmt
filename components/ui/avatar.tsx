@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react"
 
 export const AvatarContext = React.createContext<{ src?: string; hasLoaded: boolean; setHasLoaded: (val: boolean) => void }>({
@@ -29,13 +30,16 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, React.ImgHTMLAttri
     const context = React.useContext(AvatarContext)
 
     React.useEffect(() => {
-      if (src) {
-        const img = new Image()
-        img.src = src
-        img.onload = () => context.setHasLoaded(true)
-        img.onerror = () => context.setHasLoaded(false)
+      if (src && typeof src === "string") {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => context.setHasLoaded(true);
+        img.onerror = () => context.setHasLoaded(false);
+      } else {
+        // If src is a Blob or unsupported, mark as not loaded
+        context.setHasLoaded(false);
       }
-    }, [src])
+    }, [src]);
 
     if (!src || !context.hasLoaded) {
       return null

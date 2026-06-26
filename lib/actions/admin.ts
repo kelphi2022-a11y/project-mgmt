@@ -1,4 +1,4 @@
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 // Users
 export const fetchUsers = async () => {
@@ -19,7 +19,7 @@ export const deactivateUser = async (userId: string) => {
 
 export const inviteUser = async (email: string, role: string) => {
   // Supabase auth admin invite (requires service_role key)
-  const { error } = await supabase.auth.admin.inviteUserByEmail(email, { role });
+  const { error } = await supabase.auth.admin.inviteUserByEmail(email, { data: { role } });
   if (error) throw error;
 };
 

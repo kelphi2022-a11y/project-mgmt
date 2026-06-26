@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import TaskCard, { Task } from '@/components/app/TaskCard';
 import TaskModal from '@/components/app/TaskModal';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ export default function ProjectTasksPage({ params }: { params: { id: string } })
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Project Tasks</h1>
         <TaskModal projectId={projectId} onTaskCreated={handleTaskCreated}>
-          <Button variant="primary">New Task</Button>
+          <Button variant="default">New Task</Button>
         </TaskModal>
       </div>
       {loading ? (

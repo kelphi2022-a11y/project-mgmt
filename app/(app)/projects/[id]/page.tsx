@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { supabase } from "@/app/lib/supabase";
+import { useParams } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -11,13 +12,8 @@ interface Project {
 }
 
 export default function ProjectDetailPage() {
-  const router = useRouter();
-  const params = useSearchParams();
-  // In Next.js App Router, dynamic segment is accessed via useParams, but for simplicity use router query placeholder.
-  // We'll use the built‑in useRouter to get the path.
-  const { pathname } = router;
-  // Extract id from pathname, assuming pattern /projects/[id]
-  const id = pathname.split("/").pop();
+  const params = useParams();
+  const id = params.id as string;
 
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);

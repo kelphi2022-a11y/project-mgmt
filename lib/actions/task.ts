@@ -1,5 +1,5 @@
 // lib/actions/task.ts
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export async function getTasksByProject(projectId: string) {
   const { data, error } = await supabase

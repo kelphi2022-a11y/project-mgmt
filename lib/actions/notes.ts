@@ -1,5 +1,5 @@
 // lib/actions/notes.ts
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export type Note = {
   id: string;

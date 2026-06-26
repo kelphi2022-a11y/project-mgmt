@@ -1,7 +1,7 @@
 import React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
-import { supabase } from '@/app/lib/supabase';
-import { SubTask } from '@/app/lib/actions/subTask';
+import { supabase } from '@/lib/supabase';
+import { SubTask } from '@/lib/actions/subTask';
 
 interface SubTaskRowProps {
   subTask: SubTask;

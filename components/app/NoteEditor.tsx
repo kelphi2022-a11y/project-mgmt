@@ -1,3 +1,4 @@
+"use client";
 // app/components/app/NoteEditor.tsx
 import React, { useEffect } from 'react';
 import { EditorContent, useEditor } from '@tiptap/react';

@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import MeetingCard from '@/components/app/MeetingCard';
 import MeetingForm from '@/components/app/MeetingForm';
 import { Button } from '@/components/ui/button';
@@ -35,7 +36,7 @@ export default function ProjectMeetingsPage({ params }: { params: { id: string }
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Project Meetings</h1>
         <MeetingForm projectId={projectId} onMeetingCreated={handleMeetingCreated}>
-          <Button variant="primary">New Meeting</Button>
+          <Button variant="default">New Meeting</Button>
         </MeetingForm>
       </div>
       {loading ? (

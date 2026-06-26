@@ -1,6 +1,6 @@
 // app/lib/notifications.ts
 
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/utils/supabase/client';
 
 /** Notification type matching the Supabase table */
 export interface Notification {

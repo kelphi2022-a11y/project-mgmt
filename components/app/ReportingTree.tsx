@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronRight, Users } from 'lucide-react';
-import { ReportingNode } from '@/app/lib/actions/reporting';
+import { ReportingNode } from '@/lib/actions/reporting';
 
 interface ReportingTreeProps {
   nodes: ReportingNode[];

@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 interface LeaveRequestModalProps {
   userId: string;
@@ -58,7 +59,7 @@ export default function LeaveRequestModal({ userId, onLeaveCreated, children }: 
           <Input type="date" value={end} onChange={(e) => setEnd(e.target.value)} />
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)} disabled={loading}>Cancel</Button>
+          <Button variant="secondary" onClick={() => setOpen(false)} disabled={loading}>Cancel</Button>
           <Button onClick={handleCreate} disabled={loading || !title || !start || !end}>
             {loading ? 'Creating…' : 'Create'}
           </Button>

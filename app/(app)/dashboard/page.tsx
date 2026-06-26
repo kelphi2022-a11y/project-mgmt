@@ -1,5 +1,6 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import { supabase } from "@/app/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
 interface Task {
@@ -14,10 +15,15 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const fetchTasks = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
       const { data, error } = await supabase
         .from("tasks")
         .select("id, title, projects(name)")
-        .eq("assignee_id", supabase.auth.session()?.user?.id);
+        .eq("assignee_id", user.id);
       if (error) console.error(error);
       else if (data) {
         const formatted = (data as any[]).map(item => ({

@@ -1,9 +1,10 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { supabase } from '@/app/lib/supabase';
-import type { Notification } from '@/app/lib/notifications';
+import { supabase } from '@/utils/supabase/client';
+import type { Notification } from '@/lib/notifications';
 
 export default function NotificationBell() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -26,7 +27,7 @@ export default function NotificationBell() {
   useEffect(() => {
     const channel = supabase
       .channel('public:notifications')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications' }, (payload) => {
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications' }, (payload: { new: unknown }) => {
         const newNotif = payload.new as Notification;
         setNotifications((prev) => [newNotif, ...prev].slice(0, 20));
       })

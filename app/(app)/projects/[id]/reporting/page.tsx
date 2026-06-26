@@ -1,6 +1,6 @@
 // app/(app)/projects/[id]/reporting/page.tsx
 import React from 'react';
-import { getReportingLines, buildReportingTree, ReportingNode } from '@/app/lib/actions/reporting';
+import { getReportingLines, buildReportingTree, ReportingNode } from '@/lib/actions/reporting';
 import ReportingTree from '@/components/app/ReportingTree';
 
 export const dynamic = 'force-dynamic'; // ensure fresh fetch on each request

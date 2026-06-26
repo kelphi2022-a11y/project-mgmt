@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/app/lib/supabase';
-import { fetchUsers, updateUserRole, deactivateUser, inviteUser } from '@/app/lib/actions/admin';
+
+import { fetchUsers, updateUserRole, deactivateUser, inviteUser } from '@/lib/actions/admin';
 import { Table, TableHeader, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -8,26 +9,31 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 
 export default function UserManagement() {
-  const [users, setUsers] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  interface User {
+    id: string;
+    email: string;
+    role: string;
+    is_active: boolean;
+  }
+  const [users, setUsers] = useState<User[]>([]);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [inviteEmail, setInviteEmail] = useState('');
   const [inviteRole, setInviteRole] = useState('member');
 
   const loadUsers = async () => {
-    setLoading(true);
     try {
       const data = await fetchUsers();
       setUsers(data);
     } catch (e) {
       console.error(e);
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadUsers();
+    const fetch = async () => {
+      await loadUsers();
+    };
+    fetch();
   }, []);
 
   const handleRoleChange = async (id: string, role: string) => {
@@ -105,7 +111,7 @@ export default function UserManagement() {
               <TableCell>{u.is_active ? 'Active' : 'Inactive'}</TableCell>
               <TableCell>
                 {u.is_active && (
-                  <Button variant="destructive" size="sm" onClick={() => handleDeactivate(u.id)}>
+                  <Button variant="danger" size="sm" onClick={() => handleDeactivate(u.id)}>
                     Deactivate
                   </Button>
                 )}

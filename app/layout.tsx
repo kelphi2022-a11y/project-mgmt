@@ -1,8 +1,8 @@
 import '@/app/globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { SessionProvider } from '@supabase/auth-helpers-react';
-import { createClient } from '@supabase/supabase-js';
-import { Sonner } from 'sonner';
+import { AuthProvider } from '@/components/AuthProvider';
+// import { createClient } from '@supabase/supabase-js'; // removed
+import { Toaster as Sonner } from 'sonner';
 import AppShell from '@/components/layout/AppShell';
 
 const geistSans = Geist({
@@ -29,9 +29,9 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-primary min-h-screen flex flex-col">
         <Sonner position="bottom-right" />
-        <SessionProvider>
+        <AuthProvider>
           <AppShell>{children}</AppShell>
-        </SessionProvider>
+        </AuthProvider>
       </body>
     </html>
   );

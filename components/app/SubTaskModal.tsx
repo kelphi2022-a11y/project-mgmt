@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 interface SubTaskModalProps {
   taskId: string;
@@ -48,7 +49,7 @@ export default function SubTaskModal({ taskId, onSubTaskCreated, children }: Sub
           onChange={(e) => setTitle(e.target.value)}
         />
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)} disabled={loading}>
+          <Button variant="secondary" onClick={() => setOpen(false)} disabled={loading}>
             Cancel
           </Button>
           <Button onClick={handleCreate} disabled={loading || !title}>

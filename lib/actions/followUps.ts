@@ -1,5 +1,5 @@
 // lib/actions/followUps.ts
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export type FollowUp = {
   id: string;

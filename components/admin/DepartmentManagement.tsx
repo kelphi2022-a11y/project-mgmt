@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/app/lib/supabase';
-import { fetchDepartments, upsertDepartment, deleteDepartment } from '@/app/lib/actions/admin';
+import { supabase } from '@/lib/supabase';
+import { fetchDepartments, upsertDepartment, deleteDepartment } from '@/lib/actions/admin';
 import { Table, TableHeader, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -70,10 +71,10 @@ export default function DepartmentManagement() {
             <TableRow key={d.id}>
               <TableCell>{d.name}</TableCell>
               <TableCell className="space-x-2">
-                <Button variant="outline" size="sm" onClick={() => openEdit(d)}>
+                <Button variant="secondary" size="sm" onClick={() => openEdit(d)}>
                   Edit
                 </Button>
-                <Button variant="destructive" size="sm" onClick={() => handleDelete(d.id)}>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(d.id)}>
                   Delete
                 </Button>
               </TableCell>

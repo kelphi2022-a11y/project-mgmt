@@ -1,5 +1,6 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import { supabase } from "@/app/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import ProjectCard from "@/components/app/ProjectCard";
 

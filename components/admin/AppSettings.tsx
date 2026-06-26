@@ -1,6 +1,7 @@
+"use client";
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/app/lib/supabase';
-import { fetchSettings, upsertSetting } from '@/app/lib/actions/admin';
+import { supabase } from '@/lib/supabase';
+import { fetchSettings, upsertSetting } from '@/lib/actions/admin';
 import { Table, TableHeader, TableRow, TableCell, TableBody } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -75,10 +76,10 @@ export default function AppSettings() {
               <TableCell>{key}</TableCell>
               <TableCell>{value}</TableCell>
               <TableCell className="space-x-2">
-                <Button variant="outline" size="sm" onClick={() => openEdit(key, value)}>
+                <Button variant="secondary" size="sm" onClick={() => openEdit(key, value)}>
                   Edit
                 </Button>
-                <Button variant="destructive" size="sm" onClick={() => handleDelete(key)}>
+                <Button variant="danger" size="sm" onClick={() => handleDelete(key)}>
                   Delete
                 </Button>
               </TableCell>
